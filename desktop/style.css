@@ -1,89 +1,94 @@
 @media (min-width: 1024px) {
-.main{
-    display:flex;
-}
-.left,.right{
-    width:40%;
-    height:100vh
-}
-.left{
-    background-color:rgb(134, 56, 203);
-    font-family:'Times New Roman', Times, serif;
-}
-h2{
-      font-size: 2rem;
-      color: white; 
-      margin:50px;
-      text-align: left;
-      
-}
-#h{
+  .main {
+    display: flex;
+  }
+  .left,
+  .right {
+    width: 40%;
+    height: 100vh;
+  }
+  .left {
+    background-color: rgb(134, 56, 203);
+    font-family: "Times New Roman", Times, serif;
+  }
+  h2 {
+    font-size: 2rem;
+    color: white;
+    margin: 50px;
+    text-align: left;
+  }
+  #h {
     margin-top: 0;
     padding: 0;
-}
-#lh{
-    color: white; 
-    margin:50px;
+  }
+  #lh {
+    color: white;
+    margin: 50px;
     text-align: left;
     border-bottom: 2px solid white;
     padding-bottom: 10px;
-}
+  }
 
-.two{
- color:white;
- font-size:20px;
- margin:50px;
- text-align: left;
-}
-.content
-  {    
-      text-align: center; 
-      transform: translate(25%, 30%);
-      background:white;
-      padding: 40px;
-}
-#i3{
+  .two {
+    color: white;
+    font-size: 20px;
+    margin: 50px;
+    text-align: left;
+  }
+  .content {
+    text-align: center;
+    transform: translate(25%, 30%);
+    background: white;
+    padding: 40px;
+  }
+  #i3 {
     text-decoration: none;
-    color:blueviolet;
-}
-.top-text{
+    color: blueviolet;
+  }
+  .top-text {
     display: flex;
-    align-items:flex-start;
+    align-items: flex-start;
     justify-content: flex-end;
     transform: translate(45%, 30%);
-    
-}
-#rh{
-        margin-bottom: 20px;
-        font-size: 2rem;
-        color: #000;
-}
-.form-entry {
+  }
+  .top-text a {
+    margin-left: 10px;
+    color: blueviolet;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  #rh {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #000;
+  }
+  .form-entry {
     margin: 10px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap:5px;
+    gap: 5px;
     align-items: center;
   }
-  #i1,#i2{
+  #i1,
+  #i2 {
     width: 60%;
     padding: 10px;
     margin: 8px 0;
-   }
-   .forgot-password {
+  }
+  .forgot-password {
     color: blueviolet;
     font-size: 0.9rem;
     margin-top: 3px;
     margin-left: 180px;
-    text-align:end;  
-    text-decoration: none;  
-  } 
+    text-align: end;
+    text-decoration: none;
+  }
   .login-button {
     margin-top: 20px;
     padding: 10px 20px;
     background: rgb(200, 200, 200);
-    color:white;
+    color: white;
     border: none;
     width: 30%;
     border-radius: 5px;
@@ -92,14 +97,160 @@ h2{
   .bottom-text {
     display: flex;
     font-size: 0.8rem;
-    align-items:flex-end; 
+    align-items: flex-end;
     justify-content: end;
-    align-self:flex-end;
-    /* transform: translate(25%, 30%); */
+    align-self: flex-end;
     color: #555;
   }
-  #i3:focus,a:focus, button:focus, input:focus {
-    outline: 2px solid #007BFF; 
+  #i3:focus,
+  a:focus,
+  button:focus,
+  input:focus {
+    outline: 2px solid #007bff;
     outline-offset: 2px;
+  }
 }
+
+
+/* starting of the IPAD-VIEW*/
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family:'Times New Roman', Times, serif;
+    background-color:blueviolet; 
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;  
+  }
+  .left {
+    text-align: center;
+    padding: auto;
+  }
+  .left h2 {
+    font-size: 2rem; 
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .left h1 {
+    font-size: 3.75rem; 
+  }
+  #lh {
+    color: #ffffff;
+  }
+  
+  #h {
+    padding:auto;
+    color: #ffffff;
+    text-align: center;
+    margin: 5px 0;
+  }
+  
+  .two {
+    font-size: 1.7rem;
+    margin: 0px 0;
+    padding: 20px 100px; 
+    line-height: 1.3;
+    text-align: center;
+  }
+  .right {
+    display: flex;              
+    flex-direction: column-reverse; 
+    justify-content: space-between; 
+    align-items: center;       
+    height: 100%;  
+    background: #ffffff;
+    color: #000000;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 350px;
+    height: 450px ;
+    text-align: center;
+  }
+  
+  .top-text {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .top-text a {
+    margin-left: 10px;
+    color: blueviolet;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  #rh {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .form-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #i1,
+  #i2 {
+    height: 30px;
+    width: 90%;
+    padding: 10px;
+    margin: 10px 8px;
+    text-align: left;
+  }
+  
+  .forgot-password {
+    color: blueviolet;
+    font-size: 0.9rem;
+    margin-top: 3px;
+    margin-left: 180px;
+    text-align: end;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+ 
+  .login-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: rgb(200, 200, 200);
+    color: white;
+    border: none;
+    width: 50%;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .bottom-text {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color:white;
+  }
+
+  #i3:focus,
+  a:focus,
+  button:focus,
+  input:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
 }
