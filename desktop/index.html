@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Compro DLS</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="main">
@@ -29,19 +33,15 @@
       <!-- Starting with the right side of page -->
       <div class="right">
         <div class="top-text">
-          <p>
+          <p id="a">
             Not a member?
-            <a
-              href="https://www.youtube.com/watch?v=wsTv9y931o8"
-              id="i3"
-              role="button"
-              tabindex="0"
+            <a href="#" id="i3" role="button" tabindex="0"
               >Request an Account</a
             >
           </p>
         </div>
         <div class="content">
-          <h1 id="rh" tabindex="0">Sign In</h1>
+          <h1 id="rh">Sign In</h1>
           <form>
             <div class="form-entry">
               <input
@@ -51,25 +51,71 @@
                 id="i1"
                 tabindex="0"
               />
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                id="i2"
-                tabindex="0"
-              />
-              <a href="#" class="forgot-password" tabindex="-1"
-                >FORGOT PASSWORD</a
+              <div class="password-container">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  id="i2"
+                  tabindex="0"
+                />
+                <i
+                  class="fa-solid fa-eye toggle-password"
+                  id="togglePassword"
+                ></i>
+              </div>
+              <script>
+                const pi = document.getElementById("i2");
+                const togglePassword =
+                  document.getElementById("togglePassword");
+
+                togglePassword.addEventListener("click", function () {
+                  const isPassword = pi.type === "password";
+                  pi.type = isPassword ? "text" : "password";
+
+                  this.classList.toggle("fa-eye-slash", isPassword);
+                  this.classList.toggle("fa-eye", !isPassword);
+                });
+              </script>
+
+              <a href="#" class="forgot-password">FORGOT PASSWORD</a>
+              <button
+                type="submit"
+                class="login-button"
+                id="login-button"
+                disabled
               >
-              <button type="submit" class="login-button" tabindex="0">
                 LOGIN
               </button>
             </div>
+            <script>
+              const emailInput = document.getElementById("i1");
+              const passwordInput = document.getElementById("i2");
+              const loginButton = document.querySelector(".login-button");
+
+              function validateForm() {
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (emailRegex.test(email) && password.length >= 8) {
+                  loginButton.disabled = false;
+                  loginButton.style.backgroundColor = "blue";
+                } else {
+                  loginButton.disabled = true;
+                  loginButton.style.backgroundColor = "grey";
+                }
+              }
+
+              emailInput.addEventListener("input", validateForm);
+              passwordInput.addEventListener("input", validateForm);
+            </script>
           </form>
         </div>
       </div>
       <div class="bottom-text">
-        <p>© 2021 Compro Technologies All Rights Reserved</p>
+        <p id="b">© 2021 Compro Technologies All Rights Reserved</p>
       </div>
     </div>
   </body>
