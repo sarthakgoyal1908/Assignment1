@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compro DLS</title>
+    <link rel="stylesheet" href="style1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <!-- Starting with the left side of the page -->
+
+      <div class="left">
+        <h2 class="comp">comproDLS<sup>TM</sup></h2>
+        <h1 class="onboard">OnBoarding</h1>
+        <h2>Application</h2>
+        <p class="Introduction">
+          Welcome to the comproDLS<sup style="font-size: x-small">TM </sup>
+          OnBoarding Application for mentors and freshers. Please sign in using
+          your organisation email and password.
+        </p>
+        <p class="Introduction">
+          In case you do not have an account, click on "Sign up now" to get
+          started.
+        </p>
+      </div>
+
+      <!-- Starting with the right side of page -->
+      <div class="right">
+        <div class="top-text">
+          <p>
+            Not a member? &nbsp;
+            <a href="#" class="color-to-links" role="button" tabindex="0"
+              >Request an Account</a
+            >
+          </p>
+        </div>
+        <div class="content">
+          <h2 class="sign-in-formatting">Sign In</h2>
+          <form>
+            <div class="form-entry">
+              <input
+                type="email"
+                placeholder="Email"
+                required
+                class="email-field"
+                tabindex="0"
+              />
+              <div class="password-container">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  class="password-field"
+                  tabindex="0"
+                />
+                <i
+                  class="fa-solid fa-eye toggle-password"
+                  id="togglePassword"
+                ></i>
+              </div>
+
+              <a href="#" class="forgot-password">FORGOT PASSWORD</a>
+              <button type="submit" class="login-button" disabled>LOGIN</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="Right-Desktop">
+        <p class="top">
+          Not a member? &nbsp;
+          <a href="#" class="color-to-links" role="button" tabindex="0"
+            >Request an Account</a
+          >
+        </p>
+        <div class="contentD">
+          <h2 class="sign-in-formattingD">Sign In</h2>
+          <form>
+            <div class="form-entry">
+              <input
+                type="email"
+                placeholder="Email"
+                required
+                class="email-fieldD"
+                tabindex="0"
+              />
+              <div class="password-container">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  class="password-fieldD"
+                  tabindex="0"
+                />
+                <i
+                  class="fa-solid fa-eye toggle-password"
+                  id="togglePasswordD"
+                ></i>
+              </div>
+
+              <a href="#" class="forgot-passwordD">FORGOT PASSWORD</a>
+              <button type="submit" class="login-buttonD" disabled>
+                LOGIN
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer>
+        <p id="b">© 2021 Compro Technologies All Rights Reserved</p>
+      </footer>
+    </div>
+    <script>
+      const passwordField = document.querySelector(".password-field");
+      const togglePassword = document.getElementById("togglePassword");
+      togglePassword.addEventListener("click", function () {
+        const isPassword = passwordField.type === "password";
+        passwordField.type = isPassword ? "text" : "password";
+        this.classList.toggle("fa-eye-slash", isPassword);
+        this.classList.toggle("fa-eye", !isPassword);
+      });
+      const passwordFieldD = document.querySelector(".password-fieldD");
+      const togglePasswordD = document.getElementById("togglePasswordD");
+      togglePasswordD.addEventListener("click", function () {
+        const isPassword = passwordFieldD.type === "password";
+        passwordFieldD.type = isPassword ? "text" : "password";
+        this.classList.toggle("fa-eye-slash", isPassword);
+        this.classList.toggle("fa-eye", !isPassword);
+      });
+      const emailInput = document.querySelector(".email-field");
+      const passwordInput = document.querySelector(".password-field");
+      const loginButton = document.querySelector(".login-button");
+      function validateForm() {
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(email) && password.length >= 8) {
+          loginButton.disabled = false;
+          loginButton.style.backgroundColor = "blue";
+        } else {
+          loginButton.disabled = true;
+          loginButton.style.backgroundColor = "grey";
+        }
+      }
+      emailInput.addEventListener("input", validateForm);
+      passwordInput.addEventListener("input", validateForm);
+      const emailInputD = document.querySelector(".email-fieldD");
+      const passwordInputD = document.querySelector(".password-fieldD");
+      const loginButtonD = document.querySelector(".login-buttonD");
+      function validateForm() {
+        const email = emailInputD.value.trim();
+        const password = passwordInputD.value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(email) && password.length >= 8) {
+          loginButtonD.disabled = false;
+          loginButtonD.style.backgroundColor = "blue";
+        } else {
+          loginButtonD.disabled = true;
+          loginButtonD.style.backgroundColor = "grey";
+        }
+      }
+      emailInputD.addEventListener("input", validateForm);
+      passwordInputD.addEventListener("input", validateForm);
+    </script>
+  </body>
+</html>
