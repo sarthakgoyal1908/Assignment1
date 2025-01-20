@@ -264,8 +264,8 @@ footer p {
     text-align: center;
   }
 
-  .email-fieldD,
-  .password-fieldD {
+  .email-field,
+  .password-field {
     margin-top: 2%;
     padding: 10px;
     background-color: #e0e0e0;
@@ -278,7 +278,7 @@ footer p {
     width: 60%;
     max-width: 28rem;
   }
-  .sign-in-formattingD {
+  .sign-in-formatting {
     /* position:relative; */
     text-align: center;
     /* left:40%; */
@@ -295,7 +295,7 @@ footer p {
     display: inline-block;
     width: 100%;
   }
-  #togglePasswordD {
+  #togglePassword {
     position: absolute;
     top: 56%;
     right: 25%;
@@ -303,17 +303,17 @@ footer p {
     transform: translateY(-50%);
     color: #888;
   }
-  #togglePasswordD:hover {
+  #togglePassword:hover {
     color: #333;
   }
-  .forgot-passwordD {
+  .forgot-password {
     font-size: 1rem;
     margin-left: 35%;
     text-align: left;
     margin-top: 3%;
   }
 
-  .login-buttonD {
+  .login-button {
     margin-top: 3rem;
     padding: 10px 10px;
     background: rgb(200, 200, 200);
