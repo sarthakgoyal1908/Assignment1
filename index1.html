@@ -51,6 +51,7 @@
                 class="email-field"
                 tabindex="0"
               />
+              <div class="error-message email-error">Email is not correct</div>
               <div class="password-container">
                 <input
                   type="password"
@@ -62,7 +63,12 @@
                 <i
                   class="fa-solid fa-eye toggle-password"
                   id="togglePassword"
+                  tabindex="0"
+                  role="button"
                 ></i>
+                <div class="error-message password-error">
+                  Password must be at least 8 characters long
+                </div>
               </div>
 
               <a href="#" class="forgot-password">FORGOT PASSWORD</a>
@@ -89,6 +95,7 @@
                 class="email-field"
                 tabindex="0"
               />
+              <div class="error-message email-error">Email is not correct</div>
               <div class="password-container">
                 <input
                   type="password"
@@ -100,7 +107,13 @@
                 <i
                   class="fa-solid fa-eye toggle-password"
                   id="togglePassword"
+                  role="button"
+                  tabindex="0"
+                  cursor:pointer;
                 ></i>
+                <div class="error-message password-error">
+                  Password must be at least 8 characters long
+                </div>
               </div>
 
               <a href="#" class="forgot-password">FORGOT PASSWORD</a>
@@ -132,6 +145,15 @@
               this.classList.toggle("fa-eye-slash", isPassword);
               this.classList.toggle("fa-eye", !isPassword);
             });
+
+            toggleButton.addEventListener("keydown", function (event) {
+              if (event.key === "Enter") {
+                const isPassword = passwordField.type === "password";
+                passwordField.type = isPassword ? "text" : "password";
+                toggleButton.classList.toggle("fa-eye-slash", isPassword);
+                toggleButton.classList.toggle("fa-eye", !isPassword);
+              }
+            });
           }
         });
       }
@@ -144,22 +166,95 @@
           const passwordInput = form.querySelector(".password-field");
           const loginButton = form.querySelector(".login-button");
 
-          function validateForm() {
+          const emailError = form.querySelector(".email-error");
+          const passwordError = form.querySelector(".password-error");
+
+          let emailBlurred = false;
+          let passwordBlurred = false;
+
+          loginButton.disabled = true;
+
+          function validateEmail() {
             const email = emailInput?.value.trim() || "";
-            const password = passwordInput?.value || "";
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            if (emailRegex.test(email) && password.length >= 8) {
-              loginButton.disabled = false;
-              loginButton.style.backgroundColor = "blue";
+            if (emailRegex.test(email)) {
+              emailInput.classList.remove("input-error");
+              emailError.classList.remove("active");
             } else {
-              loginButton.disabled = true;
-              loginButton.style.backgroundColor = "grey";
+              emailInput.classList.add("input-error");
+              emailError.classList.add("active");
             }
           }
 
+          function validatePassword() {
+            const password = passwordInput?.value || "";
+
+            if (password.length >= 8) {
+              passwordInput.classList.remove("input-error");
+              passwordError.classList.remove("active");
+            } else {
+              passwordInput.classList.add("input-error");
+              passwordError.classList.add("active");
+            }
+          }
+
+          emailInput?.addEventListener("blur", function () {
+            emailBlurred = true;
+            validateEmail();
+            validateForm();
+          });
+
+          passwordInput?.addEventListener("blur", function () {
+            passwordBlurred = true;
+            validatePassword();
+            validateForm();
+          });
+          function validateForm() {
+            if (emailBlurred) validateEmail();
+            if (passwordBlurred) validatePassword();
+            const isFormValid =
+              !emailError.classList.contains("active") &&
+              !passwordError.classList.contains("active") &&
+              emailBlurred &&
+              passwordBlurred;
+
+            loginButton.disabled = !isFormValid;
+            loginButton.style.backgroundColor = isFormValid
+              ? "#6c59b7"
+              : "grey";
+          }
           emailInput?.addEventListener("input", validateForm);
           passwordInput?.addEventListener("input", validateForm);
+          loginButton?.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            if (!loginButton.disabled) {
+              emailInput.value = "";
+              passwordInput.value = "";
+              emailInput.classList.remove("input-error");
+              passwordInput.classList.remove("input-error");
+              emailError.classList.remove("active");
+              passwordError.classList.remove("active");
+
+              alert("Login successful!");
+            }
+          });
+
+          loginButton?.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" && !loginButton.disabled) {
+              e.preventDefault();
+
+              emailInput.value = "";
+              passwordInput.value = "";
+              emailInput.classList.remove("input-error");
+              passwordInput.classList.remove("input-error");
+              emailError.classList.remove("active");
+              passwordError.classList.remove("active");
+
+              alert("Login successful!");
+            }
+          });
         });
       }
 

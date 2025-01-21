@@ -1,6 +1,18 @@
-#login-button.active {
-  background: #6c59b7;
+.input-error {
+  border: 2px solid red;
 }
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.error-message.active {
+  display: block; 
+}
+
 .Right-Desktop {
   display: none;
 }
@@ -138,7 +150,7 @@ sup {
 a:focus,
 button:focus,
 input:focus {
-  outline: 2px solid #007bff;
+  outline: 2px solid #6c59b7;
   outline-offset: 2px;
 }
 footer p {
@@ -201,7 +213,7 @@ footer p {
     display: none;
   }
   body {
-    overflow: hidden;
+    overflow: auto;
   }
   .main {
     display: flex;
