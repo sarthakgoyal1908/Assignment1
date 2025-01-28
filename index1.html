@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compro DLS</title>
+    <link rel="stylesheet" href="style1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <!-- Starting with the left side of the page -->
+
+      <div class="left">
+        <h2 class="comp">comproDLS<sup>TM</sup></h2>
+        <h1 class="onboard">OnBoarding</h1>
+        <h2>Application</h2>
+        <p class="Introduction">
+          Welcome to the comproDLS<sup style="font-size: x-small">TM </sup>
+          OnBoarding Application for mentors and freshers. Please sign in using
+          your organisation email and password.
+        </p>
+        <p class="Introduction">
+          In case you do not have an account, click on "Sign up now" to get
+          started.
+        </p>
+      </div>
+
+      <!-- Starting with the right side of page -->
+      <div class="right">
+        <div class="top-text">
+          <p>
+            Not a member? &nbsp;
+            <a href="#" class="color-to-links" role="button" tabindex="0"
+              >Request an Account</a
+            >
+          </p>
+        </div>
+        <div class="content">
+          <h2 class="sign-in-formatting">Sign In</h2>
+          <form>
+            <div class="form-entry">
+              <input
+                type="email"
+                placeholder="Email"
+                required
+                class="email-field"
+                tabindex="0"
+              />
+              <div class="error-message email-error">Email is not correct</div>
+              <div class="password-container">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  class="password-field"
+                  tabindex="0"
+                />
+                <i
+                  class="fa-solid fa-eye toggle-password"
+                  id="togglePassword"
+                  tabindex="0"
+                  role="button"
+                ></i>
+                <div class="error-message password-error">
+                  Password must be at least 8 characters long
+                </div>
+              </div>
+
+              <a href="#" class="forgot-password">FORGOT PASSWORD</a>
+              <button type="submit" class="login-button" disabled>LOGIN</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="Right-Desktop">
+        <p class="top">
+          Not a member? &nbsp;
+          <a href="#" class="color-to-links" role="button" tabindex="0"
+            >Request an Account</a
+          >
+        </p>
+        <div class="contentD">
+          <h2 class="sign-in-formatting">Sign In</h2>
+          <form>
+            <div class="form-entry">
+              <input
+                type="email"
+                placeholder="Email"
+                required
+                class="email-field"
+                tabindex="0"
+              />
+              <div class="error-message email-error">Email is not correct</div>
+              <div class="password-container">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  class="password-field"
+                  tabindex="0"
+                />
+                <i
+                  class="fa-solid fa-eye toggle-password"
+                  id="togglePassword"
+                  role="button"
+                  tabindex="0"
+                  cursor:pointer;
+                ></i>
+                <div class="error-message password-error">
+                  Password must be at least 8 characters long
+                </div>
+              </div>
+
+              <a href="#" class="forgot-password">FORGOT PASSWORD</a>
+              <button type="submit" class="login-button" disabled>LOGIN</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer>
+        <p id="b">© 2021 Compro Technologies All Rights Reserved</p>
+      </footer>
+    </div>
+    <script>
+      function setupPasswordToggle(passwordContainerSelector, toggleClass) {
+        const passwordContainers = document.querySelectorAll(
+          passwordContainerSelector
+        );
+
+        passwordContainers.forEach((container) => {
+          const passwordField = container.querySelector(
+            "input[type='password']"
+          );
+          const toggleButton = container.querySelector(`.${toggleClass}`);
+
+          if (passwordField && toggleButton) {
+            toggleButton.addEventListener("click", function () {
+              const isPassword = passwordField.type === "password";
+              passwordField.type = isPassword ? "text" : "password";
+              this.classList.toggle("fa-eye-slash", isPassword);
+              this.classList.toggle("fa-eye", !isPassword);
+            });
+
+            toggleButton.addEventListener("keydown", function (event) {
+              if (event.key === "Enter") {
+                const isPassword = passwordField.type === "password";
+                passwordField.type = isPassword ? "text" : "password";
+                toggleButton.classList.toggle("fa-eye-slash", isPassword);
+                toggleButton.classList.toggle("fa-eye", !isPassword);
+              }
+            });
+          }
+        });
+      }
+
+      function setupFormValidation(formSelector) {
+        const forms = document.querySelectorAll(formSelector);
+
+        forms.forEach((form) => {
+          const emailInput = form.querySelector(".email-field");
+          const passwordInput = form.querySelector(".password-field");
+          const loginButton = form.querySelector(".login-button");
+
+          const emailError = form.querySelector(".email-error");
+          const passwordError = form.querySelector(".password-error");
+
+          let emailBlurred = false;
+          let passwordBlurred = false;
+
+          loginButton.disabled = true;
+
+          function validateEmail() {
+            const email = emailInput?.value.trim() || "";
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailRegex.test(email)) {
+              emailInput.classList.remove("input-error");
+              emailError.classList.remove("active");
+            } else {
+              emailInput.classList.add("input-error");
+              emailError.classList.add("active");
+            }
+          }
+
+          function validatePassword() {
+            const password = passwordInput?.value || "";
+
+            if (password.length >= 8) {
+              passwordInput.classList.remove("input-error");
+              passwordError.classList.remove("active");
+            } else {
+              passwordInput.classList.add("input-error");
+              passwordError.classList.add("active");
+            }
+          }
+
+          emailInput?.addEventListener("blur", function () {
+            emailBlurred = true;
+            validateEmail();
+            validateForm();
+          });
+
+          passwordInput?.addEventListener("blur", function () {
+            passwordBlurred = true;
+            validatePassword();
+            validateForm();
+          });
+          function validateForm() {
+            if (emailBlurred) validateEmail();
+            if (passwordBlurred) validatePassword();
+            const isFormValid =
+              !emailError.classList.contains("active") &&
+              !passwordError.classList.contains("active") &&
+              emailBlurred &&
+              passwordBlurred;
+
+            loginButton.disabled = !isFormValid;
+            loginButton.style.backgroundColor = isFormValid
+              ? "#6c59b7"
+              : "grey";
+          }
+          emailInput?.addEventListener("input", validateForm);
+          passwordInput?.addEventListener("input", validateForm);
+          loginButton?.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            if (!loginButton.disabled) {
+              emailInput.value = "";
+              passwordInput.value = "";
+              emailInput.classList.remove("input-error");
+              passwordInput.classList.remove("input-error");
+              emailError.classList.remove("active");
+              passwordError.classList.remove("active");
+
+              alert("Login successful!");
+            }
+          });
+
+          loginButton?.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" && !loginButton.disabled) {
+              e.preventDefault();
+
+              emailInput.value = "";
+              passwordInput.value = "";
+              emailInput.classList.remove("input-error");
+              passwordInput.classList.remove("input-error");
+              emailError.classList.remove("active");
+              passwordError.classList.remove("active");
+
+              alert("Login successful!");
+            }
+          });
+        });
+      }
+
+      setupPasswordToggle(".password-container", "toggle-password");
+      setupFormValidation("form");
+    </script>
+  </body>
+</html>
